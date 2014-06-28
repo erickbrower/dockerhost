@@ -8,7 +8,7 @@
 #$num_instances=1
 
 # Official CoreOS channel from which updates should be downloaded
-#$update_channel='alpha'
+$update_channel='beta'
 
 # Log the serial consoles of CoreOS VMs to log/
 # Enable by setting value to true, disable with false
@@ -21,9 +21,9 @@
 # If 2375 is used, Vagrant will auto-increment (e.g. in the case of $num_instances > 1)
 # You can then use the docker tool locally by setting the following env var:
 #   export DOCKER_HOST='tcp://127.0.0.1:2375'
-#$expose_docker_tcp=2375
+$expose_docker_tcp=2375
 
 # Setting for VirtualBox VMs
 #$vb_gui = false
-#$vb_memory = 1024
-#$vb_cpus = 1
+$vb_memory = 1024
+$vb_cpus = 1
