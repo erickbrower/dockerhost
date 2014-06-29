@@ -4,8 +4,8 @@ Easily install and configure a Docker server on Mac OS X.
 
 ### Prerequisites
 
-* Install [Vagrant](http://vagrantup.com)
-* Install [VirtualBox](http://www.virtualbox.org)
+* Install [Vagrant](https://www.vagrantup.com/downloads)
+* Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 * Install [Docker](http://docker.io) client. The quickest way is with `brew install docker`
 
 ### Install
