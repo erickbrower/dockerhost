@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ -z "$DOCKERHOST" ]; then
+    echo "ERROR: Can't find DOCKERHOST!"
+    exit 1
+fi
+
+(cd $DOCKERHOST && vagrant "$@")

@@ -1,4 +1,3 @@
-
 function _check_vagrant() {
     hash vagrant 2>/dev/null || { 
         echo >&2 "ERROR: Vagrant is not installed! Please install it before continuing." 
@@ -22,11 +21,17 @@ function _check_docker_client() {
         exit 1 
         }
 }
+
 function _set_exports() {
     echo "Setting exports for DOCKERHOST in $1"
     echo 'export DOCKER_HOST=tcp://localhost:2375' >> $1
     echo "export DOCKERHOST=$DOCKERHOST" >> $1
     . $1
+}
+
+function _install_ex() {
+    cp $DOCKERHOST/dh /usr/local/bin/dh
+    chmod +x /usr/local/bin/dh
 }
 
 _check_vagrant
@@ -45,6 +50,7 @@ fi
 git clone https://github.com/erickbrower/dockerhost.git $DOCKERHOST
 (cd $DOCKERHOST && vagrant up)
 
+_install_ex
 
 if [ -f ~/.bashrc ]; then
     _set_exports ~/.bashrc
