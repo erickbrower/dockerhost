@@ -36,7 +36,7 @@ Remember to reload the vm with `dh reload` after setting any of these.
 
 ### Using 
 
-`docker` shoud now work almost as though it were installed natively. Go forth and create containers!
+The `docker` command shoud now work. Go forth and create containers!
 
 dockerhost installs a tiny wrapper script called `dh` for managing the VM. If you ever need to run a [Vagrant command](http://docs.vagrantup.com/v2/cli/index.html) on your dockerhost, just pass it to `dh` instead. Some examples:
 
