@@ -7,11 +7,11 @@ A simple CoreOS instance as your Docker server on Mac OS X.
 
 ### Install (Manual)
 
-1. `git clone git@github.com:erickbrower/dockerhost.git`
-2. `cd dockerhost`
-3. `vagrant up` (This will prompt you for your OS X admin password after a few seconds)
-4. `echo 'export DOCKER_HOST=tcp://localhost:2375' >> ~/.bashrc` (or zshrc, if you use zsh)
-5. `source ~/.bashrc`
+1. `echo 'export DOCKERHOST=~/.dockerhost' >> ~/.bashrc` (or zshrc, if you use zsh)
+2. `echo 'export DOCKER_HOST=tcp://localhost:2375' >> ~/.bashrc`
+3. `. ~/.bashrc`
+4. `git clone git@github.com:erickbrower/dockerhost.git $DOCKERHOST`
+5. `(cd $DOCKERHOST && vagrant up)` (This will prompt you for your OS X admin password after a few seconds)
 
 ### Install the Docker client
 
