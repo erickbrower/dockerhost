@@ -31,3 +31,7 @@ The docker server is installed as a VM, so if the VM isn't running, docker won't
 ### Ports
 
 The 49000 to 49900 port range is forwarded to OS X, so be sure to set the `publish` value for your docker container to something in that range. Ex., `--publish 49100:8080`. 
+
+### Shameless Plug
+
+Check out my [dockerfiles repo](http://github.com/erickbrower/dockerfiles), it might have an image you need. 
