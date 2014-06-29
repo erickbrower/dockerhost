@@ -1,21 +1,27 @@
 ## dockerhost
 
-A simple CoreOS instance as your Docker server on Mac OS X. 
+Easily install and configure a Docker server on Mac OS X. 
+
+### Prerequisites
+
+* Install [Vagrant](http://vagrantup.com)
+* Install [VirtualBox](http://www.virtualbox.org)
+* Install [Docker](http://docker.io) client. The quickest way is with `brew install docker`
 
 ### Install (Simple)
 `curl -L https://raw.github.com/erickbrower/dockerhost/master/install.sh | sh`
 
+Vagrant will prompt you to enter your OS X password for mounting the shared folder via NFS. When the process is finished, check the installation with `docker pull erickbrower/rails`
+
 ### Install (Manual)
+Seriously though, just do the simple install.
 
 1. `echo 'export DOCKERHOST=~/.dockerhost' >> ~/.bashrc` (or zshrc, if you use zsh)
 2. `echo 'export DOCKER_HOST=tcp://localhost:2375' >> ~/.bashrc`
 3. `. ~/.bashrc`
 4. `git clone git@github.com:erickbrower/dockerhost.git $DOCKERHOST`
-5. `(cd $DOCKERHOST && vagrant up)` (This will prompt you for your OS X admin password after a few seconds)
+5. `(cd $DOCKERHOST && vagrant up)`
 
-### Install the Docker client
-
-The simplest way is  `brew install docker`. Then check that your server is installed correctly by running `docker pull erickbrower/rails`
 
 ### Configure
 These ENV vars are checked in the Vagrantfile and used to override default values. 

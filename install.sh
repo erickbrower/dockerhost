@@ -1,20 +1,49 @@
+
+function _check_vagrant() {
+    hash vagrant 2>/dev/null || { 
+        echo >&2 "Vagrant is not installed! Please install it before continuing." 
+        echo >&2 "http://www.vagrantup.com"
+        exit 1 
+        }
+}
+
+function _check_virtualbox() {
+    hash vboxmanage 2>/dev/null || { 
+        echo >&2 "Virtualbox is not installed! Please install it before continuing."
+        echo >&2 "http://www.virtualbox.org"
+        exit 1 
+        }
+}
+
+function _check_docker_client() {
+    hash docker 2>/dev/null || { 
+        echo >&2 "Docker is not installed! Please install it before continuing."
+        echo >&2 "\`brew install docker\`"
+        exit 1 
+        }
+}
+
+_check_vagrant
+_check_virtualbox
+_check_docker_client
+
 if [ ! -n "$DOCKERHOST" ]; then
     DOCKERHOST=~/.dockerhost
 fi
 
 if [ -d "$DOCKERHOST" ]; then
     echo "ERROR: dockerhost is already installed!"
-    exit
+    exit 1
 fi
 
 git clone https://github.com/erickbrower/dockerhost.git $DOCKERHOST
 (cd $DOCKERHOST && vagrant up)
 
 function _set_exports() {
-    echo "Setting exports for DOCKERHOST in $1"
-    echo 'export DOCKER_HOST=tcp://localhost:2375' >> $1
-    echo "export DOCKERHOST=$DOCKERHOST" >> $1
-    . $1
+echo "Setting exports for DOCKERHOST in $1"
+echo 'export DOCKER_HOST=tcp://localhost:2375' >> $1
+echo "export DOCKERHOST=$DOCKERHOST" >> $1
+. $1
 }
 
 if [ -f ~/.bashrc ]; then
