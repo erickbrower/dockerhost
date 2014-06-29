@@ -2,7 +2,10 @@
 
 A simple CoreOS instance as your Docker server on Mac OS X. 
 
-### Install
+### Install (Simple)
+`curl -L https://raw.github.com/erickbrower/dockerhost/master/install.sh | sh`
+
+### Install (Manual)
 
 1. `git clone git@github.com:erickbrower/dockerhost.git`
 2. `cd dockerhost`
@@ -17,7 +20,7 @@ The simplest way is  `brew install docker`. Then check that your server is insta
 
 ### Using 
 
-The docker server is installed as a VM, so if the VM isn't running, docker won't work. If the `docker` command isn't working, double-check that the VM is running with `vagrant status`, or restart it with `vagrant reload`.
+The docker server is installed as a VM, so if the VM isn't running, docker won't work. If the `docker` command isn't working, double-check that the VM is running, or restart it with `vagrant reload`.
 
 ### Ports
 
