@@ -17,7 +17,7 @@ Vagrant.configure('2') do |config|
   config.vm.provider :virtualbox do |v|
     # On VirtualBox, we don't have guest additions or a functional vboxsf
     # in CoreOS, so tell Vagrant that so it can be smarter.
-    v.gui = $vb_gui
+    v.gui = false
     v.memory = ENV['DOCKER_HOST_VB_MEMORY'] || 2048
     v.cpus = ENV['DOCKER_HOST_VB_CPUS'] || 2
     v.check_guest_additions = false
@@ -28,7 +28,7 @@ Vagrant.configure('2') do |config|
     config.vm.network :forwarded_port, :host => port, :guest => port
   end
 
-  config.vm.network 'forwarded_port', guest: 2375, host: 2375, auto_correct: true
+  config.vm.network 'forwarded_port', guest: 2375, host: 2375
 
   # plugin conflict
   if Vagrant.has_plugin?('vagrant-vbguest') then
