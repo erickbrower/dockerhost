@@ -18,3 +18,7 @@ The simplest way is  `brew install docker`. Then check that your server is insta
 ### Using 
 
 The docker server is installed as a VM, so if the VM isn't running, docker won't work. If the `docker` command isn't working, double-check that the VM is running, or restart it with `vagrant reload`.
+
+### Ports
+
+The 49000 to 49900 port range is forwarded to OS X, so be sure to set the `publish` value for your docker container to something in that range. Ex., `--publish 49100:8080`. 
