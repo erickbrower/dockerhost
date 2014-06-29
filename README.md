@@ -8,20 +8,10 @@ Easily install and configure a Docker server on Mac OS X.
 * Install [VirtualBox](http://www.virtualbox.org)
 * Install [Docker](http://docker.io) client. The quickest way is with `brew install docker`
 
-### Install (Simple)
+### Install
 `curl -L https://raw.github.com/erickbrower/dockerhost/master/install.sh | sh`
 
 Vagrant will prompt you to enter your OS X password for mounting the shared folder via NFS. When the process is finished, check the installation with `docker pull erickbrower/rails`
-
-### Install (Manual)
-Seriously though, just do the simple install.
-
-1. `echo 'export DOCKERHOST=~/.dockerhost' >> ~/.bashrc` (or zshrc, if you use zsh)
-2. `echo 'export DOCKER_HOST=tcp://localhost:2375' >> ~/.bashrc`
-3. `. ~/.bashrc`
-4. `git clone git@github.com:erickbrower/dockerhost.git $DOCKERHOST`
-5. `(cd $DOCKERHOST && vagrant up)`
-
 
 ### Configure
 These ENV vars are checked in the Vagrantfile and used to override default values. 
@@ -42,15 +32,23 @@ export DOCKERHOST_PROJECTS='~/MyProjects'
 export DOCKERHOST_MEMORY='4096'
 ```
 
-Remember to reload the vm with `vagrant reload` after setting any of these. 
+Remember to reload the vm with `dh reload` after setting any of these. 
 
 ### Using 
 
-The docker server is installed as a VM, so if the VM isn't running, docker won't work. If the `docker` command isn't working, check the VM with `vagrant status`, or restart it with `vagrant reload`. A handy shortcut syntax for cd'ing to the dockerhost directory and running a vagrant command is `(cd $DOCKERHOST && vagrant <the command>)`. The parens execute the statement in a subshell so you don't actually leave your current directory. 
+`docker` shoud now work almost as though it were installed natively. Go forth and create containers!
+
+dockerhost installs a tiny wrapper script called `dh` for managing the VM. If you ever need to run a [Vagrant command](http://docs.vagrantup.com/v2/cli/index.html) on your dockerhost, just pass it to `dh` instead. Some examples:
+
+* `dh reload`
+* `dh ssh`
+* `dh status`
+
+It's really just a shortcut for `(cd $DOCKERHOST && vagrant <the command>)`. No magic, just convenience.
 
 ### Ports
 
-The 49000 to 49900 port range is forwarded to OS X, so be sure to set the `publish` value for your docker container to something in that range. Ex., `--publish 49100:8080`. 
+The default Docker port range, 49000 to 49900, is forwarded to OS X. When you publish ports for your containers, be sure to use something in that range. Ex., `--publish 49100:8080`. 
 
 ### Shameless Plug
 
