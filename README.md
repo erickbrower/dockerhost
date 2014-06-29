@@ -17,6 +17,12 @@ A simple CoreOS instance as your Docker server on Mac OS X.
 
 The simplest way is  `brew install docker`. Then check that your server is installed correctly by running `docker pull erickbrower/rails`
 
+### Configure
+These ENV vars are checked in the Vagrantfile and used to override default values. Set any of them in your `~/.bashrc` with `export STUFF=thing`, and source them with `. ~/.bashrc`. Be sure to `vagrant reload` to apply any new configurations.
+
+* `DOCKERHOST_PROJECTS` - Default: `~/Workbench`. The dir that will be synced with the VM. All VOLUME mounts in your docker commands that attempt to mount a directory on the host will actually be checking this directory.
+* `DOCKERHOST_MEMORY` - Default: 2048MB
+* `DOCKERHOST_CPUS` - Default: 2
 
 ### Using 
 

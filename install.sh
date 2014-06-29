@@ -1,10 +1,14 @@
+hash git >/dev/null 2>&1 && /usr/bin/env docker ps || {
+  echo "ERROR: The docker client is not installed! Install it with \`brew install docker\`"
+  exit
+}
 
 if [ ! -n "$DOCKERHOST" ]; then
     DOCKERHOST=~/.dockerhost
 fi
 
 if [ -d "$DOCKERHOST" ]; then
-    echo "dockerhost is already installed!"
+    echo "ERROR: dockerhost is already installed!"
     exit
 fi
 
