@@ -13,7 +13,20 @@ Easily install and configure a Docker server on Mac OS X.
 
 Vagrant will prompt you to enter your OS X password for mounting the shared folder via NFS. When the process is finished, check the installation with `docker pull erickbrower/rails`
 
-### Configure
+### Using 
+
+The `docker` command should work now. Go forth and create containers!
+
+dockerhost installs a tiny wrapper script called `dh` for managing the VM. If you ever need to run a [Vagrant command](http://docs.vagrantup.com/v2/cli/index.html) on your dockerhost, just pass it to `dh` instead. Some examples:
+
+* `dh reload`
+* `dh ssh`
+* `dh status`
+
+It's really just a shortcut for `(cd $DOCKERHOST && vagrant <the command>)`. No magic, just convenience.
+
+### Configure (Optional)
+
 These ENV vars are checked in the Vagrantfile and used to override default values. 
 
 ENV Variable          | Default         | Notes 
@@ -33,18 +46,6 @@ export DOCKERHOST_MEMORY='4096'
 ```
 
 Remember to reload the VM with `dh reload` after setting any of these. 
-
-### Using 
-
-The `docker` command should work now. Go forth and create containers!
-
-dockerhost installs a tiny wrapper script called `dh` for managing the VM. If you ever need to run a [Vagrant command](http://docs.vagrantup.com/v2/cli/index.html) on your dockerhost, just pass it to `dh` instead. Some examples:
-
-* `dh reload`
-* `dh ssh`
-* `dh status`
-
-It's really just a shortcut for `(cd $DOCKERHOST && vagrant <the command>)`. No magic, just convenience.
 
 ### Ports
 
