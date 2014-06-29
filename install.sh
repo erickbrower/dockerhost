@@ -11,18 +11,16 @@ git clone https://github.com/erickbrower/dockerhost.git $DOCKERHOST
 (cd $DOCKERHOST && vagrant up)
 
 function _set_exports() {
-    echo 'Setting exports for DOCKERHOST in $1'
+    echo "Setting exports for DOCKERHOST in $1"
     echo 'export DOCKER_HOST=tcp://localhost:2375' >> $1
-    echo 'export DOCKERHOST=~/.dockerhost' >> $1
+    echo "export DOCKERHOST=$DOCKERHOST" >> $1
     . $1
 }
 
-if [ -f "~/.bashrc" ]; then
-    _set_exports '~/.bashrc'
-fi
-
-if [ -f "~/.zshrc" ]; then
-    _set_exports '~/.zshrc'
+if [ -f ~/.bashrc ]; then
+    _set_exports ~/.bashrc
+elif [ -f ~/.zshrc ]; then
+    _set_exports ~/.zshrc
 fi
 
 echo "Done! Try running a command like 'docker pull erickbrower/rails'"
