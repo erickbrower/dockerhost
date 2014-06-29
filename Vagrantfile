@@ -24,6 +24,10 @@ Vagrant.configure('2') do |config|
     v.functional_vboxsf = false
   end
 
+  (49000..49900).each do |port|
+    config.vm.network :forwarded_port, :host => port, :guest => port
+  end
+
   config.vm.network 'forwarded_port', guest: 2375, host: 2375, auto_correct: true
 
   # plugin conflict
