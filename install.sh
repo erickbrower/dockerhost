@@ -1,8 +1,3 @@
-hash docker >/dev/null 2>&1 && /usr/bin/env docker ps || {
-  echo "ERROR: The docker client is not installed! Install it with \`brew install docker\`"
-  exit
-}
-
 if [ ! -n "$DOCKERHOST" ]; then
     DOCKERHOST=~/.dockerhost
 fi
