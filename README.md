@@ -23,7 +23,7 @@ These ENV vars are checked in the Vagrantfile and used to override default value
 ENV Variable          | Default         | Notes 
 --------------------- | --------------- | -----
 `DOCKERHOST`          | `~/.dockerhost` | The directory where this source will be cloned. Vagrant commands like `vagrant ssh` should be run from here.
-`DOCKERHOST_PROJECTS` | `~/Workbench`   | The directory that will be synced with the VM. All VOLUME mounts in your docker commands that attempt to mount a directory on the host will actually be checking this directory.
+`DOCKERHOST_PROJECTS` | `~/Workbench`   | The directory that will be synced to the VM at `/home/core/share`. All mounted volumes in your docker commands will actually be relative to this directory. Ex, `/home/core/share/my_project:/opt/app`
 `DOCKERHOST_MEMORY` | 2048              | 
 `DOCKERHOST_CPUS`   | 2                 | 
 
