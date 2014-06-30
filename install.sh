@@ -4,6 +4,8 @@ if [ ! -n "$DOCKERHOST" ]; then
     DOCKERHOST=~/.dockerhost
 fi
 
+[ -d ~/Workbench ] || mkdir -p ~/Workbench
+
 function check_installed() {
     if [ -d "$DOCKERHOST" ]; then
         echo "ERROR: dockerhost is already installed!"
