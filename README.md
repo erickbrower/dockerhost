@@ -35,8 +35,8 @@ ENV Variable          | Default         | Notes
 --------------------- | --------------- | -----
 `DOCKERHOST`          | `~/.dockerhost` | The directory where this source will be cloned.
 `DOCKERHOST_PROJECTS` | `~/Workbench`   | The directory that will be synced to the VM at `/home/core/share`. All mounted volumes in your docker commands should be relative to this directory. Ex, `/home/core/share/my_project:/opt/app`
-`DOCKERHOST_MEMORY` | 2048              | 
-`DOCKERHOST_CPUS`   | 2                 | 
+`DOCKERHOST_MEMORY`   | 2048              | 
+`DOCKERHOST_CPUS`     | 2                 | 
 
 An example of overriding would look something like this, in `~/.bashrc`
 
@@ -52,6 +52,11 @@ Remember to reload the VM with `dh reload` after setting any of these.
 ### Ports
 
 The default Docker port range, 49000 to 49900, is forwarded to OS X. When you publish ports for your containers, be sure to use something in that range. Ex., `--publish 49100:8080`. 
+
+### Uninstall
+
+`curl -L https://raw.github.com/erickbrower/dockerhost/master/uninstall.sh | sh`
+
 
 ### Shameless Plug
 
